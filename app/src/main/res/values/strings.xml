@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">sorting-algorithm-visualizer</string>
+    <string name="main_button">Start</string>
+    <string name="main_description">Hello, and welcome to my project! \n this project is meant to visualize sorting algorithms.</string>
+    <string name="selection_button">Selection</string>
+    <string name="bubble_button">Bubble</string>
+    <string name="merge_button">Merge</string>
+    <string name="quick_button">Quick</string>
+</resources>
