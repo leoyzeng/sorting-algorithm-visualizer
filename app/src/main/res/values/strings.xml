@@ -2,8 +2,12 @@
     <string name="app_name">sorting-algorithm-visualizer</string>
     <string name="main_button">Start</string>
     <string name="main_description">Hello, and welcome to my project! \n this project is meant to visualize sorting algorithms.</string>
-    <string name="selection_button">Selection</string>
-    <string name="bubble_button">Bubble</string>
-    <string name="merge_button">Merge</string>
-    <string name="quick_button">Quick</string>
+    <string name="button_selection">Selection</string>
+    <string name="button_bubble">Bubble</string>
+    <string name="button_merge">Merge</string>
+    <string name="button_quick">Quick</string>
+    <string name="number_of_elements_string">number of elements: </string>
+    <string name="number_of_elements">filler</string>
+    <string name="button_reset">reset</string>
+    <string name="button_start">start</string>
 </resources>

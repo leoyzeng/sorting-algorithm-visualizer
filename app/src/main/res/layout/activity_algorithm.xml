@@ -33,11 +33,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/button_selection"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="@string/selection_button" />
+                    android:text="@string/button_selection" />
 
             </LinearLayout>
 
@@ -53,11 +53,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/button_bubble"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="@string/bubble_button" />
+                    android:text="@string/button_bubble" />
             </LinearLayout>
 
             <Space
@@ -96,11 +96,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/button_merge"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="@string/merge_button" />
+                    android:text="@string/button_merge" />
             </LinearLayout>
 
             <Space
@@ -116,11 +116,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/button_quick"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="@string/quick_button" />
+                    android:text="@string/button_quick" />
             </LinearLayout>
 
             <Space
@@ -166,7 +166,126 @@
 
         </LinearLayout>
 
-    
+    <LinearLayout
+        android:id="@+id/row4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row3"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginHorizontal="20dp">
+
+
+        <TextView
+            android:id="@+id/num_elements_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/number_of_elements_string" />
+
+        <TextView
+            android:id="@+id/num_elements"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/number_of_elements" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row4"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginHorizontal="20dp">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row5"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginHorizontal="20dp">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_start"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/button_start" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_reset"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/button_reset" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
