@@ -17,8 +17,23 @@ class Container(private val activity: AppCompatActivity) {
     private var size: Int = 0
     private val minSizeRange: Int = 3
     private val maxSizeRange: Int = 20
+    private lateinit var sorting: Sorting
 
 
+    private fun initSorting(){
+        sorting = Sorting(sortType, size)
+        sorting.print()
+    }
+
+    private fun resetSorting(){
+
+    }
+
+
+    /**
+     * attach listeners for everything in container
+     * sort buttons, seekbar, start/reset button
+     */
     fun attachListener(){
 
         println(this.activity.findViewById(R.id.button_selection))
@@ -42,6 +57,16 @@ class Container(private val activity: AppCompatActivity) {
         val buttonQuick: Button = this.activity.findViewById(R.id.button_quick) // selection button
         buttonQuick.setOnClickListener { // on click
             sortType = "quick"
+        }
+
+        val buttonStart: Button = this.activity.findViewById(R.id.button_start) // start button
+        buttonStart.setOnClickListener { // on click
+            initSorting() // start sorting, create sorting object
+        }
+
+        val buttonReset: Button = this.activity.findViewById(R.id.button_reset) // reset button
+        buttonReset.setOnClickListener { // on click
+            resetSorting() // reset sorting, destructor for sorting object
         }
 
         val numElement: TextView = this.activity.findViewById(R.id.num_elements)
