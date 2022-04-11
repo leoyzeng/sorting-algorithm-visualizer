@@ -20,11 +20,19 @@ class Container(private val activity: AppCompatActivity) {
     private lateinit var sorting: Sorting
 
 
+    /**
+     * create sorting object and uses sorting object
+     * this should be called when user presses start
+     */
     private fun initSorting(){
-        sorting = Sorting(sortType, size)
+        sorting = Sorting(activity, sortType, size)
         sorting.print()
+        sorting.test()
     }
 
+    /**
+     * reset sorting object and the graphics
+     */
     private fun resetSorting(){
 
     }
@@ -43,17 +51,14 @@ class Container(private val activity: AppCompatActivity) {
         buttonSelection.setOnClickListener { // on click
             sortType = "selection"
         }
-
         val buttonBubble: Button = this.activity.findViewById(R.id.button_bubble) // selection button
         buttonBubble.setOnClickListener { // on click
             sortType = "bubble"
         }
-
         val buttonMerge: Button = this.activity.findViewById(R.id.button_merge) // selection button
         buttonMerge.setOnClickListener { // on click
             sortType = "merge"
         }
-
         val buttonQuick: Button = this.activity.findViewById(R.id.button_quick) // selection button
         buttonQuick.setOnClickListener { // on click
             sortType = "quick"
@@ -63,22 +68,18 @@ class Container(private val activity: AppCompatActivity) {
         buttonStart.setOnClickListener { // on click
             initSorting() // start sorting, create sorting object
         }
-
         val buttonReset: Button = this.activity.findViewById(R.id.button_reset) // reset button
         buttonReset.setOnClickListener { // on click
             resetSorting() // reset sorting, destructor for sorting object
         }
 
-        val numElement: TextView = this.activity.findViewById(R.id.num_elements)
-
-
-        val seekBar: SeekBar = this.activity.findViewById(R.id.seekBar)
+        val numElement: TextView = this.activity.findViewById(R.id.num_elements) // number of elements
+        val seekBar: SeekBar = this.activity.findViewById(R.id.seekBar) // seekbar to change number of elements
         seekBar.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener{
 
             override fun onProgressChanged(seekbar: SeekBar, progress: Int, fromUser: Boolean) { // when user changes seekbar
                 size = ((maxSizeRange-minSizeRange) * seekBar.progress / 100) + minSizeRange // set size
                 numElement.text = size.toString()
-                println(size)
             }
             override fun onStartTrackingTouch(seekbar: SeekBar?) {
             }

@@ -1,6 +1,9 @@
 package com.example.sorting_algorithm_visualizer
 
-class Element(index: Int?, value: Int?) {
-    var index: Int? = index
-    val value: Int? = value
+/**
+ * represents a single element in the array
+ * contains its own draw method
+ */
+data class Element(var index: Int?, val value: Int?) {
+
 }
