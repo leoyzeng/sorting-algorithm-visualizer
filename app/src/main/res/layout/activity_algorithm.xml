@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlgorithmActivity">
+    tools:context=".Container">
 
         <LinearLayout
             android:id="@+id/row1"
@@ -222,15 +222,6 @@
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_weight="1"/>
-        <Button
-            android:id="@+id/animateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="animate"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
 
     </LinearLayout>
 

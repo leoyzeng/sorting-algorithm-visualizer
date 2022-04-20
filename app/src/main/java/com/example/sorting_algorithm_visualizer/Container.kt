@@ -20,16 +20,17 @@ class Container(private val activity: AppCompatActivity) {
     private val maxSizeRange: Int = 20
     private lateinit var sorting: Sorting
 
-
     /**
      * create sorting object and uses sorting object
      * this should be called when user presses start
      */
     private fun initSorting(){
         sorting = Sorting(activity, sortType, size)
-        sorting.print()
+        //sorting.print()
         //sorting.test()
 
+        var draw : DrawView = activity.findViewById(R.id.drawView);
+        draw.updateElements(sorting.elements)
 
     }
 

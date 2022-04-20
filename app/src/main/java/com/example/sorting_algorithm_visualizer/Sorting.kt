@@ -22,7 +22,7 @@ class Sorting(
     private var numberElements: Int // number of elements in array
     ){
 
-    private val elements = Array(numberElements) {Element(null, null)} // array of elements to sort
+    val elements = Array(numberElements) {Element(null, null)} // array of elements to sort
 
 
     init{

@@ -16,8 +16,5 @@ class AlgorithmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_algorithm)
         container.attachListener()
-
-        drawView.start(4)
-
     }
 }
