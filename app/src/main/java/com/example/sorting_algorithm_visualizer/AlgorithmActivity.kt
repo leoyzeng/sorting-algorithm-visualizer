@@ -2,6 +2,7 @@ package com.example.sorting_algorithm_visualizer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_algorithm.*
 
 /**
  * activity for algorithms
@@ -14,7 +15,9 @@ class AlgorithmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_algorithm)
-
         container.attachListener()
+
+        drawView.start(4)
+
     }
 }

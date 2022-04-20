@@ -217,11 +217,20 @@
         android:layout_marginHorizontal="20dp">
 
 
-        <ImageView
-            android:id="@+id/imageView"
+        <com.example.sorting_algorithm_visualizer.DrawView
+            android:id="@+id/drawView"
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_weight="1"/>
+        <Button
+            android:id="@+id/animateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="animate"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress" />
 
     </LinearLayout>
 

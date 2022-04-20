@@ -4,6 +4,7 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sorting_algorithm_visualizer.DrawView
 
 /**
  * container class to hold all elements
@@ -27,7 +28,9 @@ class Container(private val activity: AppCompatActivity) {
     private fun initSorting(){
         sorting = Sorting(activity, sortType, size)
         sorting.print()
-        sorting.test()
+        //sorting.test()
+
+
     }
 
     /**
