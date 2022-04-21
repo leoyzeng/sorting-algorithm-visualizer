@@ -29,6 +29,11 @@ class Container(private val activity: AppCompatActivity) {
         //sorting.print()
         //sorting.test()
 
+        for(i in sorting.elements){
+            println(i.value)
+            println(i.index)
+        }
+
         var draw : DrawView = activity.findViewById(R.id.drawView);
         draw.updateElements(sorting.elements)
 

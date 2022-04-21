@@ -22,10 +22,23 @@ class Sorting(
     private var numberElements: Int // number of elements in array
     ){
 
-    val elements = Array(numberElements) {Element(null, null)} // array of elements to sort
+    var elements = emptyArray<Element>() // array of elements to sort
 
-
+    /**
+     * set up array
+     */
     init{
+        createArray()
+        randomize()
+        print()
+    }
+
+    /**
+     * create a ordered array of numberElements
+     * set index and value of element to index in array
+     */
+    private fun createArray(){
+        elements = Array(numberElements){ Element(0,0) }
 
         for(i in 0 until numberElements){
             val element = Element(i, i)
@@ -34,12 +47,26 @@ class Sorting(
         }
     }
 
-
-    fun print(){
-
-        for (element in elements) {
-            println(element.value)
-            println("here")
+    /**
+     * randomize elements array
+     * update index number in element
+     */
+    private fun randomize(){
+        elements.shuffle()
+        for(i in 0 until numberElements){
+            elements[i].index = i
         }
     }
+
+    /**
+     * print out index and value of elements
+     * used for debugging 
+     */
+    private fun print(){
+        for(i in elements){
+            println("index:" + i.index + " value: " + i.value)
+        }
+    }
+
+
 }
