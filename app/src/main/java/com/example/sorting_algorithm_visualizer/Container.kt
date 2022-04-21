@@ -47,15 +47,15 @@ class Container(private val activity: AppCompatActivity) {
      * this should be called when user presses start
      */
     private fun initSorting(){
-        sorting = Sorting(activity, sortType, size)
-        draw.updateElements(sorting.elements)
+        sorting.sort(draw)
     }
 
     /**
      * reset sorting object and the graphics
      */
     private fun resetSorting(){
-        initSorting()
+        sorting = Sorting(activity, sortType, size)
+        draw.updateElements(sorting.elements)
     }
 
     /**

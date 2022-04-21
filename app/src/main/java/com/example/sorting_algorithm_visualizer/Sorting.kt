@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.concurrent.thread
+import kotlin.math.min
 
 /**
  * class for sorting the elements
@@ -17,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
  * this class has abstract methods
  */
 class Sorting(
-    private val context: Context,
+    private val activity: AppCompatActivity,
     private var type: String, // type of sorting eg. selection, bubble, merge
     private var numberElements: Int // number of elements in array
     ){
@@ -57,6 +59,56 @@ class Sorting(
             elements[i].index = i
         }
     }
+
+    fun sort(drawView: DrawView){
+        when (type){
+            "selection" -> selectionSort(drawView)
+            "bubble" -> bubbleSort()
+            "merge" -> mergeSort()
+            "quick" -> quickSort()
+            else -> {
+                println("error, no sort selected")
+            }
+        }
+
+    }
+
+    private fun selectionSort(drawView: DrawView){
+        var size: Int = numberElements
+
+        for(i in 0 until size-1){
+            var minIndex = i
+            for(j in i+1 until size){
+                if(elements[j].value < elements[minIndex].value){
+                    minIndex = j
+                }
+            }
+            var temp: Element = elements[i]
+            elements[i] = elements[minIndex]
+            elements[minIndex] = temp
+
+            drawView.updateElements(elements)
+
+        }
+
+        for(i in 0 until numberElements){
+            elements[i].index = i
+        }
+    }
+
+    private fun bubbleSort(){
+
+    }
+
+    private fun mergeSort(){
+
+    }
+
+    private fun quickSort(){
+
+    }
+
+
 
     /**
      * print out index and value of elements

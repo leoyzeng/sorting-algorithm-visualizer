@@ -42,13 +42,7 @@ class DrawView(
         var totalHeight : Float = 800f
         var totalWidth : Float = 800f
 
-        println(elements.size)
-
-
         for(element in elements){
-
-            println(element.index)
-            println(element.value)
 
             var left = totalWidth / elements.size * element.index
             var right = left + 20f
@@ -56,13 +50,15 @@ class DrawView(
             var bottom = totalHeight
 
             canvas.drawRect(left, top, right, bottom, paint)
-
         }
     }
 
+    /**
+     * overridden function from View
+     * will be called automatically if invalidate() is called
+     */
     public override fun onDraw(canvas: Canvas) {
         drawElements(canvas,elements)
-
     }
 
 
