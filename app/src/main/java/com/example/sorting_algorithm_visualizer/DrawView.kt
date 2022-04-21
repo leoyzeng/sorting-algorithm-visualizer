@@ -20,7 +20,8 @@ class DrawView(
 
     var paint = Paint()
     var number: Int? = null
-    var elements: Array<Element> = Array(20){Element(null,null)}
+    var elements = arrayOf<Element>() // array of elements to sort
+
 
     /**
      * called on from container
@@ -38,13 +39,24 @@ class DrawView(
 
         paint.color = Color.BLACK
         paint.strokeWidth = 3f
-        var left : Float = 0f
-        var top : Float = 400f
+        var totalHeight : Float = 800f
+        var totalWidth : Float = 800f
+
+        println(elements.size)
+
 
         for(element in elements){
-            canvas.drawRect(left, top, left + 10, 400f, paint)
-            left += 20
-            top -= 20
+
+            println(element.index)
+            println(element.value)
+
+            var left = totalWidth / elements.size * element.index
+            var right = left + 20f
+            var top = totalHeight - (totalHeight / elements.size * element.value)
+            var bottom = totalHeight
+
+            canvas.drawRect(left, top, right, bottom, paint)
+
         }
     }
 
