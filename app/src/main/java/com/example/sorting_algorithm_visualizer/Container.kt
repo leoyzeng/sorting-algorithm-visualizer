@@ -14,11 +14,33 @@ import com.example.sorting_algorithm_visualizer.DrawView
  */
 class Container(private val activity: AppCompatActivity) {
 
-    private var sortType: String = ""
-    private var size: Int = 0
-    private val minSizeRange: Int = 3
+    private var sortType: String = "" // type of sorting eg. selection, bubble, merge
+    private var size: Int = 3 // size of sorting.elements array
+    private val minSizeRange: Int = 3 // min and max size of array
     private val maxSizeRange: Int = 20
-    private lateinit var sorting: Sorting
+    private lateinit var sorting: Sorting // object to do the sorting logic
+    private lateinit var draw : DrawView // object to draw graphics
+
+    /**
+     * init UI after view is loaded
+     * this should be called from onCreate of the activity
+     */
+    fun initUI(){
+        draw = activity.findViewById(R.id.drawView)
+        initSeekBar()
+    }
+
+    /**
+     * update size based on seek bar
+     * update text of seek bar
+     */
+    private fun initSeekBar(){
+        val numElement: TextView = this.activity.findViewById(R.id.num_elements) // number of elements
+        val seekBar: SeekBar = this.activity.findViewById(R.id.seekBar) // seekbar to change number of elements
+        size = ((maxSizeRange-minSizeRange) * seekBar.progress / 100) + minSizeRange // set size
+        numElement.text = size.toString()
+    }
+
 
     /**
      * create sorting object and uses sorting object
@@ -26,26 +48,15 @@ class Container(private val activity: AppCompatActivity) {
      */
     private fun initSorting(){
         sorting = Sorting(activity, sortType, size)
-        //sorting.print()
-        //sorting.test()
-
-        for(i in sorting.elements){
-            println(i.value)
-            println(i.index)
-        }
-
-        var draw : DrawView = activity.findViewById(R.id.drawView);
         draw.updateElements(sorting.elements)
-
     }
 
     /**
      * reset sorting object and the graphics
      */
     private fun resetSorting(){
-
+        initSorting()
     }
-
 
     /**
      * attach listeners for everything in container

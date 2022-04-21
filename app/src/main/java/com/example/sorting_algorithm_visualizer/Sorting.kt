@@ -60,7 +60,7 @@ class Sorting(
 
     /**
      * print out index and value of elements
-     * used for debugging 
+     * used for debugging
      */
     private fun print(){
         for(i in elements){
