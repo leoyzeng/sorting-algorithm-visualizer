@@ -96,6 +96,25 @@ class Sorting(
         }
     }
 
+
+    /******
+     *
+     *
+     *
+     *
+     *
+     *
+     *  NOTE TO SELF
+     *  STORE THE STEPS TO SORTING IN AN ARRAY
+     *  PROBABLY THE BEST WAY TO ANIMATE
+     *  2D ARRAY WITH 2 ELEMENTS REPRESENTING THE INDEX OF 2 SWAPPED ELEMENTS
+     *  {{i1, j1}, {i2, j2}}
+     *
+     *
+     *
+     * 
+     */
+
     private fun bubbleSort(){
 
     }
