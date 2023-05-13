@@ -4,7 +4,6 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sorting_algorithm_visualizer.DrawView
 
 /**
  * container class to hold all elements
@@ -47,14 +46,22 @@ class Container(private val activity: AppCompatActivity) {
      * this should be called when user presses start
      */
     private fun initSorting(){
+        if(sortType == "selection"){
+            sorting = SelectionSort(activity, sortType, size)
+        }
         sorting.sort(draw)
+        draw.updateElements(sorting.elements)
+        println("starting sort");
+        println(sorting.swaps.toString());
     }
 
     /**
      * reset sorting object and the graphics
      */
     private fun resetSorting(){
-        sorting = Sorting(activity, sortType, size)
+        if(sortType == "insertion"){
+            sorting = SelectionSort(activity, sortType, size)
+        }
         draw.updateElements(sorting.elements)
     }
 

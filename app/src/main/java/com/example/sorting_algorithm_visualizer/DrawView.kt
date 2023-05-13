@@ -20,14 +20,13 @@ class DrawView(
 
     var paint = Paint()
     var number: Int? = null
-    var elements = arrayOf<Element>() // array of elements to sort
+    private var elements : IntArray? = null // array of elements to sort
 
 
     /**
      * called on from container
-     *
      */
-    fun updateElements(elements: Array<Element>){
+    fun updateElements(elements: IntArray){
         this.elements = elements
         invalidate()
     }
@@ -35,18 +34,22 @@ class DrawView(
     /**
      * draw elements based on array
      */
-    private fun drawElements(canvas: Canvas, elements: Array<Element>){
+    private fun drawElements(canvas: Canvas, elements: IntArray?){
 
         paint.color = Color.BLACK
         paint.strokeWidth = 3f
         var totalHeight : Float = 800f
         var totalWidth : Float = 800f
 
-        for(element in elements){
+        if(elements == null){
+            return;
+        }
 
-            var left = totalWidth / elements.size * element.index
+        for(index in elements.indices){
+
+            var left = totalWidth / elements.size * index
             var right = left + 20f
-            var top = totalHeight - (totalHeight / elements.size * element.value)
+            var top = totalHeight - (totalHeight / elements.size * elements[index])
             var bottom = totalHeight
 
             canvas.drawRect(left, top, right, bottom, paint)
@@ -58,7 +61,7 @@ class DrawView(
      * will be called automatically if invalidate() is called
      */
     public override fun onDraw(canvas: Canvas) {
-        drawElements(canvas,elements)
+        drawElements(canvas, elements)
     }
 
 

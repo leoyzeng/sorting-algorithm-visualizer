@@ -18,13 +18,14 @@ import kotlin.math.min
  * those sorting classes extends this sorting
  * this class has abstract methods
  */
-class Sorting(
+abstract class Sorting(
     private val activity: AppCompatActivity,
     private var type: String, // type of sorting eg. selection, bubble, merge
     private var numberElements: Int // number of elements in array
     ){
 
-    var elements = emptyArray<Element>() // array of elements to sort
+    var elements = IntArray(0) // array of elements to sort
+    val swaps = mutableListOf<IntArray>()
 
     /**
      * set up array
@@ -36,65 +37,25 @@ class Sorting(
     }
 
     /**
-     * create a ordered array of numberElements
-     * set index and value of element to index in array
+     * create a ordered array of integers from 1 to n
      */
     private fun createArray(){
-        elements = Array(numberElements){ Element(0,0) }
+        elements = IntArray(numberElements);
 
         for(i in 0 until numberElements){
-            val element = Element(i, i)
-            elements[i] = element
+            elements[i] = i+1
 
         }
     }
 
     /**
      * randomize elements array
-     * update index number in element
      */
     private fun randomize(){
         elements.shuffle()
-        for(i in 0 until numberElements){
-            elements[i].index = i
-        }
     }
 
-    fun sort(drawView: DrawView){
-        when (type){
-            "selection" -> selectionSort(drawView)
-            "bubble" -> bubbleSort()
-            "merge" -> mergeSort()
-            "quick" -> quickSort()
-            else -> {
-                println("error, no sort selected")
-            }
-        }
-
-    }
-
-    private fun selectionSort(drawView: DrawView){
-        var size: Int = numberElements
-
-        for(i in 0 until size-1){
-            var minIndex = i
-            for(j in i+1 until size){
-                if(elements[j].value < elements[minIndex].value){
-                    minIndex = j
-                }
-            }
-            var temp: Element = elements[i]
-            elements[i] = elements[minIndex]
-            elements[minIndex] = temp
-
-            drawView.updateElements(elements)
-
-        }
-
-        for(i in 0 until numberElements){
-            elements[i].index = i
-        }
-    }
+    abstract fun sort(drawView: DrawView)
 
 
     /******
@@ -112,20 +73,9 @@ class Sorting(
      *
      *
      *
-     * 
+     *
      */
 
-    private fun bubbleSort(){
-
-    }
-
-    private fun mergeSort(){
-
-    }
-
-    private fun quickSort(){
-
-    }
 
 
 
@@ -134,8 +84,8 @@ class Sorting(
      * used for debugging
      */
     private fun print(){
-        for(i in elements){
-            println("index:" + i.index + " value: " + i.value)
+        for(i in elements.indices){
+            println("index:" + i + " value: " + elements[i])
         }
     }
 
