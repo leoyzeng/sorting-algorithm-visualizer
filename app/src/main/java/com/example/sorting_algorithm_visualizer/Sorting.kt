@@ -26,6 +26,8 @@ abstract class Sorting(
 
     var elements = IntArray(0) // array of elements to sort
     val swaps = mutableListOf<IntArray>()
+    private var currentStep: Int = 0 // current step of the sort
+    private var sorted: Boolean = false
 
     /**
      * set up array
@@ -57,24 +59,40 @@ abstract class Sorting(
 
     abstract fun sort(drawView: DrawView)
 
-
-    /******
-     *
-     *
-     *
-     *
-     *
-     *
-     *  NOTE TO SELF
-     *  STORE THE STEPS TO SORTING IN AN ARRAY
-     *  PROBABLY THE BEST WAY TO ANIMATE
-     *  2D ARRAY WITH 2 ELEMENTS REPRESENTING THE INDEX OF 2 SWAPPED ELEMENTS
-     *  {{i1, j1}, {i2, j2}}
-     *
-     *
-     *
-     *
+    /**
+     * do the next step in the swap based on the predetermined order
      */
+    fun next(){
+        if(sorted){ // already sorted, nothing else to do
+            return
+        }
+        val swap:IntArray = swaps[currentStep] // the current step of the sorting process
+        val temp:Int = elements[swap[0]]// swap the 2 elements
+        elements[swap[0]] = elements[swap[1]]
+        elements[swap[1]] = temp
+        currentStep ++
+
+        if(currentStep == swaps.size){ // check if it reached the end of the swaps array
+            sorted = true
+        }
+    }
+
+    /**
+     * do the previous step in the sort
+     */
+    fun previous(){
+        if(currentStep == 0){ // if sorting hasn't started yet, don't have previous step
+            return
+        }
+        if(currentStep == swaps.size){ // if already sorted, mark it as no longer sorted
+            sorted = false
+        }
+        val swap:IntArray = swaps[currentStep] // the current step of the sorting process
+        val temp:Int = elements[swap[0]]// swap the 2 elements
+        elements[swap[0]] = elements[swap[1]]
+        elements[swap[1]] = temp
+        currentStep --
+    }
 
 
 

@@ -40,7 +40,6 @@ class Container(private val activity: AppCompatActivity) {
         numElement.text = size.toString()
     }
 
-
     /**
      * create sorting object and uses sorting object
      * this should be called when user presses start
@@ -52,7 +51,11 @@ class Container(private val activity: AppCompatActivity) {
         sorting.sort(draw)
         draw.updateElements(sorting.elements)
         println("starting sort");
-        println(sorting.swaps.toString());
+        for (swap in sorting.swaps) {
+            val i = swap[0]
+            val j = swap[1]
+            println("Swapped indices: [$i, $j]")
+        }
     }
 
     /**
@@ -62,6 +65,22 @@ class Container(private val activity: AppCompatActivity) {
         if(sortType == "insertion"){
             sorting = SelectionSort(activity, sortType, size)
         }
+        draw.updateElements(sorting.elements)
+    }
+
+    /**
+     * do the next step in the sorting
+     */
+    private fun nextStep(){
+        sorting.next()
+        draw.updateElements(sorting.elements)
+    }
+
+    /**
+     * do the previous step in the sorting
+     */
+    private fun previousStep(){
+        sorting.previous()
         draw.updateElements(sorting.elements)
     }
 
@@ -100,10 +119,18 @@ class Container(private val activity: AppCompatActivity) {
             resetSorting() // reset sorting, destructor for sorting object
         }
 
+        val buttonNext: Button = this.activity.findViewById(R.id.button_next) // next button
+        buttonNext.setOnClickListener { // on click
+            nextStep() //
+        }
+        val buttonPrevious: Button = this.activity.findViewById(R.id.button_previous) // previous button
+        buttonPrevious.setOnClickListener { // on click
+            previousStep() //
+        }
+
         val numElement: TextView = this.activity.findViewById(R.id.num_elements) // number of elements
         val seekBar: SeekBar = this.activity.findViewById(R.id.seekBar) // seekbar to change number of elements
         seekBar.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener{
-
             override fun onProgressChanged(seekbar: SeekBar, progress: Int, fromUser: Boolean) { // when user changes seekbar
                 size = ((maxSizeRange-minSizeRange) * seekBar.progress / 100) + minSizeRange // set size
                 numElement.text = size.toString()
