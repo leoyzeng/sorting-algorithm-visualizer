@@ -48,7 +48,16 @@ class Container(private val activity: AppCompatActivity) {
         if(sortType == "selection"){
             sorting = SelectionSort(activity, sortType, size)
         }
-        sorting.sort(draw)
+        else if(sortType == "bubble"){
+            sorting = BubbleSort(activity, sortType, size)
+        }
+        else if(sortType == "insertion"){
+            sorting = InsertionSort(activity, sortType, size)
+        }
+        else if(sortType == "quick"){
+            sorting = QuickSort(activity, sortType, size)
+        }
+        sorting.sort()
         draw.updateElements(sorting.elements)
         println("starting sort");
         for (swap in sorting.swaps) {
@@ -60,11 +69,10 @@ class Container(private val activity: AppCompatActivity) {
 
     /**
      * reset sorting object and the graphics
+     * reset array
      */
     private fun resetSorting(){
-        if(sortType == "insertion"){
-            sorting = SelectionSort(activity, sortType, size)
-        }
+        sorting.reset()
         draw.updateElements(sorting.elements)
     }
 
@@ -101,18 +109,20 @@ class Container(private val activity: AppCompatActivity) {
         buttonBubble.setOnClickListener { // on click
             sortType = "bubble"
         }
-        val buttonMerge: Button = this.activity.findViewById(R.id.button_merge) // selection button
-        buttonMerge.setOnClickListener { // on click
-            sortType = "merge"
+        val buttonInsertion: Button = this.activity.findViewById(R.id.button_insertion) // selection button
+        buttonInsertion.setOnClickListener { // on click
+            sortType = "insertion"
         }
         val buttonQuick: Button = this.activity.findViewById(R.id.button_quick) // selection button
         buttonQuick.setOnClickListener { // on click
             sortType = "quick"
         }
 
-        val buttonStart: Button = this.activity.findViewById(R.id.button_start) // start button
-        buttonStart.setOnClickListener { // on click
-            initSorting() // start sorting, create sorting object
+        val buttonNew: Button = this.activity.findViewById(R.id.button_new) // start button
+        buttonNew.setOnClickListener { // on click
+            if(sortType != ""){
+                initSorting() // create new array, create sorting object
+            }
         }
         val buttonReset: Button = this.activity.findViewById(R.id.button_reset) // reset button
         buttonReset.setOnClickListener { // on click

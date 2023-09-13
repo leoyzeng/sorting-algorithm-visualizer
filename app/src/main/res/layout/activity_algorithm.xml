@@ -96,11 +96,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/button_merge"
+                    android:id="@+id/button_insertion"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="@string/button_merge" />
+                    android:text="@string/button_insertion" />
             </LinearLayout>
 
             <Space
@@ -253,12 +253,12 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/button_start"
+                android:id="@+id/button_new"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="@string/button_start" />
+                android:text="@string/button_new" />
         </LinearLayout>
 
         <Space

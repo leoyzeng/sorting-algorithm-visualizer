@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 import kotlin.concurrent.thread
 import kotlin.math.min
 
@@ -25,6 +26,7 @@ abstract class Sorting(
     ){
 
     var elements = IntArray(0) // array of elements to sort
+    var originalElements = IntArray(0)
     val swaps = mutableListOf<IntArray>()
     private var currentStep: Int = 0 // current step of the sort
     private var sorted: Boolean = false
@@ -35,6 +37,7 @@ abstract class Sorting(
     init{
         createArray()
         randomize()
+        saveOriginalArray()
         print()
     }
 
@@ -42,7 +45,7 @@ abstract class Sorting(
      * create a ordered array of integers from 1 to n
      */
     private fun createArray(){
-        elements = IntArray(numberElements);
+        elements = IntArray(numberElements)
 
         for(i in 0 until numberElements){
             elements[i] = i+1
@@ -57,13 +60,20 @@ abstract class Sorting(
         elements.shuffle()
     }
 
-    abstract fun sort(drawView: DrawView)
+    private fun saveOriginalArray(){
+        originalElements = elements.copyOf()
+    }
+
+    abstract fun sort()
 
     /**
      * do the next step in the swap based on the predetermined order
      */
     fun next(){
         if(sorted){ // already sorted, nothing else to do
+            return
+        }
+        if(currentStep == swaps.size){ // at the end
             return
         }
         val swap:IntArray = swaps[currentStep] // the current step of the sorting process
@@ -87,11 +97,25 @@ abstract class Sorting(
         if(currentStep == swaps.size){ // if already sorted, mark it as no longer sorted
             sorted = false
         }
-        val swap:IntArray = swaps[currentStep] // the current step of the sorting process
+        val swap:IntArray = swaps[currentStep-1] // the current step of the sorting process
         val temp:Int = elements[swap[0]]// swap the 2 elements
         elements[swap[0]] = elements[swap[1]]
         elements[swap[1]] = temp
         currentStep --
+    }
+
+    /**
+     * reset array to original state
+     */
+    fun reset(){
+
+        println("reset")
+        println(Arrays.toString(elements))
+        println(Arrays.toString(originalElements))
+
+        elements = originalElements.copyOf()
+        currentStep = 0
+        sorted = false
     }
 
 

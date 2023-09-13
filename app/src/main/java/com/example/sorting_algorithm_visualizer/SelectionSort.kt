@@ -8,7 +8,7 @@ class SelectionSort(
     private var numberElements: Int // number of elements in array
 ) : Sorting(activity, type, numberElements){
 
-    override fun sort(drawView: DrawView) {
+    override fun sort() {
 
         var original = elements.copyOf()
 
